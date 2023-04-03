@@ -1,5 +1,6 @@
 package org.rp.sec1;
 
+import org.rp.courseutil.Util;
 import reactor.core.publisher.Mono;
 
 public class Lec03MonoSubscribe {
@@ -8,15 +9,15 @@ public class Lec03MonoSubscribe {
         //Publisher
         Mono<Integer> mono = Mono.just("ball")
                 .map(String::length)
-                .map(integer -> integer/0);
+                .map(integer -> integer/1);
 
         // 1
         //mono.subscribe();
 
         // 2
-        mono.subscribe(item ->System.out.println(item),
-                    err->System.out.println(err.getMessage()),
-                ()-> System.out.println("Completed")
+        mono.subscribe(Util.onNext(),
+                Util.onError(),
+                Util.onComplete()
                 );
     }
 }
