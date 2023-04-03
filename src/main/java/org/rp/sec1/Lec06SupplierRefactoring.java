@@ -8,11 +8,13 @@ public class Lec06SupplierRefactoring {
 
     public static void main(String[] args) {
         getName();
-        getName()
+        String name = getName()
                 .subscribeOn(Schedulers.boundedElastic())
-                .subscribe(Util.onNext());
+                .block();
+        System.out.println(name);
         getName();
         Util.sleepSeconds(4);
+
     }
 
     private static Mono<String> getName(){
