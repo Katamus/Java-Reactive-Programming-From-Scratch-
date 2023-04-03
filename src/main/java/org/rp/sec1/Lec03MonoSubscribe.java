@@ -6,7 +6,9 @@ public class Lec03MonoSubscribe {
 
     public static void main(String[] args) {
         //Publisher
-        Mono<String> mono = Mono.just("ball");
+        Mono<Integer> mono = Mono.just("ball")
+                .map(String::length)
+                .map(integer -> integer/0);
 
         // 1
         //mono.subscribe();
