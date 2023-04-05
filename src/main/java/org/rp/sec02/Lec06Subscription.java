@@ -38,7 +38,7 @@ public class Lec06Subscription {
                 });
 
         Util.sleepSeconds(3);
-        atomicReference.get().request(3);
+        atomicReference.get().request(3) ;
         Util.sleepSeconds(5);
         atomicReference.get().request(3);
         Util.sleepSeconds(5);
