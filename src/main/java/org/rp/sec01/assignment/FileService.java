@@ -1,4 +1,4 @@
-package org.rp.sec1.assignment;
+package org.rp.sec01.assignment;
 
 import reactor.core.publisher.Mono;
 

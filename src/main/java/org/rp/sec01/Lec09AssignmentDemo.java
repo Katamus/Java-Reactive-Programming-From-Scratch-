@@ -1,7 +1,7 @@
-package org.rp.sec1;
+package org.rp.sec01;
 
 import org.rp.courseutil.Util;
-import org.rp.sec1.assignment.FileService;
+import org.rp.sec01.assignment.FileService;
 
 public class Lec09AssignmentDemo {
 
