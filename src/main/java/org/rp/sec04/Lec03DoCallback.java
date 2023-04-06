@@ -11,11 +11,12 @@ public class Lec03DoCallback {
             for (int i = 0; i < 5; i++) {
                 fluxSink.next(i);
             }
+            fluxSink.error(new RuntimeException("oops"));
             fluxSink.complete();
             System.out.println("--Completed");
         })
         .doOnComplete(() -> System.out.println("doOnComplete"))
-                .doFirst(()-> System.out.println("doFirst"))
+                .doFirst(()-> System.out.println("doFirst 1"))
                 .doOnNext(o-> System.out.println("doOnNext : "+o))
                 .doOnSubscribe(s-> System.out.println("doOnSubscribe : "+s))
                 .doOnRequest(l-> System.out.println("doOnRequest :" + l))
@@ -24,6 +25,7 @@ public class Lec03DoCallback {
                 .doOnCancel(() -> System.out.println("doOnCancel"))
                 .doFinally(signalType -> System.out.println("doFinally : "+signalType))
                 .doOnDiscard(Object.class,o -> System.out.println("doOnDiscard : "+o))
+                .take(2)
         .subscribe(Util.subscriber());
     }
 }
