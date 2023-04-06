@@ -6,8 +6,9 @@ import reactor.core.publisher.Flux;
 public class Lec04FluxCreateIssueFix {
 
     public static void main(String[] args) {
-        Flux.create(fluxSink -> {
 
+        // only one instance of fluxSink
+        Flux.create(fluxSink -> {
             String country;
             do {
                 country = Util.faker().country().name();
