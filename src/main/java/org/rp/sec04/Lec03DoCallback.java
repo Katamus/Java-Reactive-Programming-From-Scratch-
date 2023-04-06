@@ -26,6 +26,7 @@ public class Lec03DoCallback {
                 .doFinally(signalType -> System.out.println("doFinally : "+signalType))
                 .doOnDiscard(Object.class,o -> System.out.println("doOnDiscard : "+o))
                 .take(2)
+                .doFinally(signalType -> System.out.println("doFinally  2: "+signalType))
         .subscribe(Util.subscriber());
     }
 }
