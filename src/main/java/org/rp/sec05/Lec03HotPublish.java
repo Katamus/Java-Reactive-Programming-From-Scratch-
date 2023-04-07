@@ -13,11 +13,11 @@ public class Lec03HotPublish {
         Flux<String> movieStream = Flux.fromStream(()->getMovie())
                 .delayElements(Duration.ofSeconds(2))
                 .publish()
-                .refCount(2);
+                .refCount(1);
 
         movieStream.subscribe(Util.subscriber("Sam"));
 
-        Util.sleepSeconds(5);
+        Util.sleepSeconds(10);
 
         movieStream.subscribe(Util.subscriber("mike"));
 
