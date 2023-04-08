@@ -37,4 +37,12 @@ public class Util {
     public static Subscriber<Object> subscriber(String name){
         return new DefaultSubscriber(name);
     }
+
+    public static void sleepMillis(int i) {
+        try {
+            Thread.sleep(i);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
 }
