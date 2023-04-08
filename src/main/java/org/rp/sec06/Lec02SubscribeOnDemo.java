@@ -10,7 +10,9 @@ public class Lec02SubscribeOnDemo {
         Flux<Object> flux = Flux.create(fluxSink -> {
             printThreadName("create");
             fluxSink.next(1);
-        }).doOnNext(i -> printThreadName("next " + i));
+        })
+                .subscribeOn(Schedulers.newParallel("vins"))
+        .doOnNext(i -> printThreadName("next " + i));
 
         Runnable runnable = ()-> flux
                 .doFirst(()->printThreadName("first2"))
