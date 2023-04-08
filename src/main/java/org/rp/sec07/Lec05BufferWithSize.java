@@ -19,7 +19,6 @@ public class Lec05BufferWithSize {
                 })
                 .onBackpressureBuffer(50,o -> System.out.println("Dropped : "+ o))
                 .publishOn(Schedulers.boundedElastic())
-
                 .doOnNext(i->{
                     Util.sleepMillis(10);
                 })
