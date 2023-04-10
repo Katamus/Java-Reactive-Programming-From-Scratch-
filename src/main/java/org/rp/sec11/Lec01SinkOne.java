@@ -15,7 +15,17 @@ public class Lec01SinkOne {
 
         mono.subscribe(Util.subscriber("sam"));
 
-        sink.tryEmitValue("hi");
+        sink.emitValue("h1",(signalType, emitResult) -> {
+            System.out.println(signalType.name());
+            System.out.println(emitResult.name());
+            return false;
+        });
+
+        sink.emitValue("hello",(signalType, emitResult) -> {
+            System.out.println(signalType.name());
+            System.out.println(emitResult.name());
+            return false;
+        });
     }
 
 }
