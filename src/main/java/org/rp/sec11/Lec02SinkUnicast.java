@@ -1,0 +1,27 @@
+package org.rp.sec11;
+
+import org.rp.courseutil.Util;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Sinks;
+
+import java.awt.*;
+
+public class Lec02SinkUnicast {
+
+    public static void main(String[] args) {
+        // handle through which we would push items
+        Sinks.Many<String> sink = Sinks.many().unicast().onBackpressureBuffer();
+
+        // handel through which subcribers will receive items
+        Flux<String> flux = sink.asFlux();
+
+        flux.subscribe(Util.subscriber("sam"));
+        flux.subscribe(Util.subscriber("mike"));
+
+        sink.tryEmitNext("hi");
+        sink.tryEmitNext("how are you");
+        sink.tryEmitNext("?");
+        sink.tryEmitComplete();
+    }
+
+}
