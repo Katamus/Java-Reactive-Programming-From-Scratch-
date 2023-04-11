@@ -13,12 +13,14 @@ public class Lec04SinMulti {
         // handel through which subcribers will receive items
         Flux<String> flux = sink.asFlux();
 
-        flux.subscribe(Util.subscriber("sam"));
-        flux.subscribe(Util.subscriber("mike"));
-
         sink.tryEmitNext("hi");
         sink.tryEmitNext("how are you");
+
+        flux.subscribe(Util.subscriber("sam"));
+        flux.subscribe(Util.subscriber("mike"));
         sink.tryEmitNext("?");
+        flux.subscribe(Util.subscriber("jake"));
+        sink.tryEmitNext("new msg");
         sink.tryEmitComplete();
     }
 
