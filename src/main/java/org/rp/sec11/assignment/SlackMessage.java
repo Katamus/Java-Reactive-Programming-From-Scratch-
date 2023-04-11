@@ -1,5 +1,8 @@
 package org.rp.sec11.assignment;
 
+import lombok.Data;
+
+@Data
 public class SlackMessage {
     private static  final  String FORMAT = "[%s -> %s] : %s";
     private String sender;
