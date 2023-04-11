@@ -7,6 +7,7 @@ import reactor.util.context.Context;
 public class Lec01Ctx {
     public static void main(String[] args) {
         getWelcomeMessage()
+        .contextWrite(Context.of("users","jack"))
         .contextWrite(Context.of("user","sam"))
         .subscribe(Util.subscriber());
     }
